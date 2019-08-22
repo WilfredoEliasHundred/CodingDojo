@@ -1,0 +1,31 @@
+Registro
+Post
+{
+"correo": "correo",
+"contrasenia" : "",
+"nombre_completo" : ""
+}
+Res
+{
+"estatus" : true / false,
+"mensaje" : ""
+}
+Recueperar contraseña
+{
+"correo" : ""
+}
+Res
+{
+"estatus" : true / false,
+"mensaje" : ""
+}
+Login
+{
+correo : "",
+contrasenia = ""
+}
+res
+{
+"estatus" : true / false,
+"mensaje" : ""
+}

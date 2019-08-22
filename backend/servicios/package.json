@@ -1,0 +1,19 @@
+{
+  "name": "servicios",
+  "version": "1.0.0",
+  "description": "Dojo 2, registrar usuario.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon --watch src src/server.js"
+  },
+  "author": "BackendGroup",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.8.1",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

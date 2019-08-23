@@ -1,7 +1,9 @@
 import Koa from 'koa'
 import routes from './routes'
+//import database from './basedatos/database'
 
 const server = new Koa();
+require('./database');
 
 routes.map(r => {
   server.use(r.routes())

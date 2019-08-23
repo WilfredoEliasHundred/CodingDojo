@@ -17,6 +17,8 @@
     "koa-helmet": "^4.2.0",
     "koa-morgan": "^1.0.1",
     "koa-router": "^7.4.0",
+    "mogoose": "0.0.1-security",
+    "mongoose": "^5.6.10",
     "swagger2-koa": "^1.0.4"
   },
   "devDependencies": {

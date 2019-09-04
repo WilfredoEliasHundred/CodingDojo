@@ -23,11 +23,10 @@ exports.create = (req, res) => {
         res.send(data);
     }).catch(err => {
         res.status(500).send({
-        message: err.message || "Some error occurred while creating the Usuario."
+            message: err.message || "Some error occurred while creating the Usuario."
         });
     });
 };
-
 
 // Retrieve and return all usuarios from the database.
 exports.findAll = (req, res) => {
@@ -71,7 +70,7 @@ exports.update = (req, res) => {
         });
     }
     
-    Usuario.findByIdAndUpdate(req.params._id, {
+    Usuario.updateOne({ correo: req.params.correo }, {
         contrasenia: req.body.contrasenia,
         nombre_completo: req.body.nombre_completo
     }, {new: true})

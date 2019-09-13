@@ -5,13 +5,13 @@ exports.create = (req, res) => {
     // Validate request
     if(!req.body.correo) {
         return res.status(400).send({
-            message: "Usuario content can not be empty"
+            message: "Usuario no puede tener correo vacío."
         });
     }
 
     // Create a Usuario
     const usuario = new Usuario({
-        correo: req.body.correo || "Untitled Usuario", 
+        correo: req.body.correo || "Usuario", 
         contrasenia: req.body.contrasenia,
         nombre_completo: req.body.nombre_completo
     });
@@ -23,7 +23,7 @@ exports.create = (req, res) => {
         res.send(data);
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while creating the Usuario."
+            message: err.message || "Ocurrió un error al ingresar el Usuario."
         });
     });
 };
@@ -95,5 +95,33 @@ exports.update = (req, res) => {
 
 // Delete a usuario with the specified usuarioId in the request
 exports.delete = (req, res) => {
+    const result = Usuario.deleteOne({ correo: req.params.correo }).exec();
+    console.log(result);
+    if(result.n === 0) {
+        return res.status(404).send({
+            message: "No se pudo eliminar el usuario con correo " + req.params.correo + result.n
+        });
+    } else {
+        res.send({
+            message: "Usuario eliminado correctamente"
+        })
+    }
 
+    // .then(result => {
+    //     if(result.n != 1) {
+    //         return res.status(404).send({
+    //             message: "No se encuentra el usuario con correo " + req.params.correo + result.n
+    //         });
+    //     }
+    //     res.send.message('Usuario eliminado correctamente');
+    // }).catch(err => {
+    //     if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+    //         return res.status(404).send({
+    //             message: 'No se encontró el usuario con correo ' + req.params.correo
+    //         });
+    //     }
+    //     return res.status(500).send({
+    //         message: 'No se pudo eliminar el usuario con correo ' + req.params.correo
+    //     });
+    // });
 };

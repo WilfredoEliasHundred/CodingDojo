@@ -6,13 +6,13 @@ exports.create = (req, res) => {
     // Validate request
     if(!req.body.correo) {
         return res.status(400).send({
-            message: "Usuario content can not be empty"
+            message: "Usuario no puede tener correo vacío."
         });
     }
 
     // Create a Usuario
     const usuario = new Usuario({
-        correo: req.body.correo || "Untitled Usuario", 
+        correo: req.body.correo || "Usuario", 
         contrasenia: req.body.contrasenia,
         nombre_completo: req.body.nombre_completo
     });
@@ -27,9 +27,7 @@ exports.create = (req, res) => {
         res.send(respuesta);
     }).catch(err => {
         respuesta = new Respuesta(false, "Error al registrar el usuario.")
-        res.status(500).send({
-            respuesta
-        });
+        res.status(500).send(respuesta);
     });
 };
 

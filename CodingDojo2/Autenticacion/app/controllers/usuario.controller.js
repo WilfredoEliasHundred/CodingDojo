@@ -142,9 +142,11 @@ exports.login = (req, res) => {
     .then(usuario => {
         if(usuario.length == 0) {
             console.log(usuario)
+            console.log(req.body)
             return res.status(404).send(respuesta = new Respuesta(false, "El correo o la contraseña no son válidos. Intente de nuevo."));
         } else {
             console.log(usuario)
+            console.log(req.body)
             res.send(respuesta = new Respuesta(true, "Acceso concedido."));
         }
     }).catch(err => {
